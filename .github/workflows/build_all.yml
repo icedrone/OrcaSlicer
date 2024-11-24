@@ -35,6 +35,10 @@ on:
         type: boolean
         default: false
 
+permissions:
+  contents: write
+  attestations: write
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
@@ -76,14 +80,3 @@ jobs:
           manifest-path: flatpak/io.github.softfever.OrcaSlicer.yml
           cache-key: flatpak-builder-${{ github.sha }}
           cache: false
-  read:
-    runs-on: ubuntu-latest
-    needs: [build_all]
-    steps:
-      - uses: cloudposse/github-action-matrix-outputs-read@v1
-        id: read
-        with:
-          matrix-step-name: build_all
-
-    outputs:
-      result: "${{ steps.read.outputs.result }}"
