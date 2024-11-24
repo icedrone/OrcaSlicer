@@ -15,7 +15,7 @@ on:
         type: string
 
 jobs:
-  build_orca:
+  build_orca_ubuntu:
     name: Build OrcaSlicer
     runs-on: ${{ inputs.os }}
     env:

@@ -136,7 +136,7 @@ jobs:
     name: Build OrcaSlicer MacOS 14
     needs: [build_deps]
     if: ${{ (!cancelled() && !inputs.build-deps-only && (inputs.valid-cache == true && needs.build_deps.result == 'skipped') || (inputs.valid-cache != true && success())) && inputs.os == 'macos-14' }}
-    uses: ./.github/workflows/build_orca_.yml
+    uses: ./.github/workflows/build_orca_macos_14.yml
     with:
       cache-key: ${{ inputs.cache-key }}
       cache-path: ${{ inputs.cache-path }}
